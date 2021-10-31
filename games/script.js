@@ -47,7 +47,7 @@ function drawGame() {
   ctx.drawImage(foodImg, food.x, food.y); //нарисовал еду а сверху что бы она появлялась в рандомном месте
 //тут рисую саму змею
   for(let i = 0; i < snake.length; i++){
-    ctx.fillStyle = "green";
+    ctx.fillStyle = i == 0 ? "green" : "red";
     ctx.fillRect(snake[i].x, snake[i].y, box, box);
   }
 //рисую счёт
@@ -60,7 +60,15 @@ function drawGame() {
 let snakeX = snake[0].x;
 let snakeY = snake[0].y;
 
-snake.pop();
+if(snakeX == food.x && snakeY == food.y) {
+  score++;
+  food = {
+    x: Math.floor((Math.random() * 17 + 1)) * box,
+    y: Math.floor((Math.random() * 15 + 3)) * box,
+  };
+} else
+  snake.pop();
+
 
 if(dir == "left") snakeX -= box;
 if(dir == "right") snakeX += box;
