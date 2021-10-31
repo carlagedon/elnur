@@ -39,6 +39,13 @@ function direction(event){
   else if(event.keyCode == 40&& dir != "up")
     dir = "down";
 }
+//хвост тоже лучше не кушать 
+function eatTail(head, arr) {
+  for(let i = 0; i < arr.length; i++) {
+    if(head.x == arr[i].x && head.y == arr[i].y)
+      clearInterval(game)
+  }
+}
 
 //тут мы уже рисуем сами картинки
 function drawGame() {
@@ -66,9 +73,13 @@ if(snakeX == food.x && snakeY == food.y) {
     x: Math.floor((Math.random() * 17 + 1)) * box,
     y: Math.floor((Math.random() * 15 + 3)) * box,
   };
-} else
+} else {
   snake.pop();
-
+}
+//нельзя выходить запределы убёт
+if(snakeX < box || snakeX > box * 17
+  || snakeY < 3 * box || snakeY > box * 17)
+  clearInterval(game);
 
 if(dir == "left") snakeX -= box;
 if(dir == "right") snakeX += box;
@@ -79,6 +90,8 @@ let newHead = {
   x: snakeX,
   y: snakeY
 };
+
+eatTail(newHead, snake)
 
 snake.unshift(newHead);
 }
