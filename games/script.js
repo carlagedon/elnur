@@ -30,13 +30,13 @@ document.addEventListener("keydown", direction);
 let dir;
 
 function direction(event){
-  if(event.keyCode == 37)
+  if(event.keyCode == 37 && dir != "right")
     dir = "left";
-  else if(event.keyCode == 38)
+  else if(event.keyCode == 38 && dir != "down")
     dir = "up";
-  else if(event.keyCode == 39)
+  else if(event.keyCode == 39 && dir != "left")
     dir = "right";
-  else if(event.keyCode == 40)
+  else if(event.keyCode == 40&& dir != "up")
     dir = "down";
 }
 
@@ -54,6 +54,25 @@ function drawGame() {
   ctx.fillStyle = "white";
   ctx.font = "50px Arial";
   ctx.fillText(score, box *2.5, box * 1.7)
+
+//рисую передвижение змейки
+
+let snakeX = snake[0].x;
+let snakeY = snake[0].y;
+
+snake.pop();
+
+if(dir == "left") snakeX -= box;
+if(dir == "right") snakeX += box;
+if(dir == "up") snakeY -= box;
+if(dir == "down") snakeY += box;
+
+let newHead = {
+  x: snakeX,
+  y: snakeY
+};
+
+snake.unshift(newHead);
 }
 
 //тут мы пишим что функция drawGame будет обновлятся каждые 100 милисекунд
