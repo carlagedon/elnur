@@ -1,31 +1,15 @@
 {
   "name": "project",
   "version": "1.0.0",
-  "description": "Elnur app",
+  "description": "ELnur project",
   "main": "app.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/carlagedon/elnur.git"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "js",
-    "javascript"
+    "jsvascript"
   ],
-  "author": "elnur",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/carlagedon/elnur/issues"
-  },
-  "homepage": "https://github.com/carlagedon/elnur#readme",
-  "devDependencies": {
-    "clean-webpack-plugin": "^4.0.0",
-    "html-webpack-plugin": "^5.5.0",
-    "webpack": "^5.64.4",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.6.0"
-  }
+  "author": "Elnur",
+  "license": "ISC"
 }
