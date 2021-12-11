@@ -1,10 +1,9 @@
-const Router = require('express')
-const router = new Router()
+const Router = require("express");
+const router = new Router();
+const userController = require("../controllers/userConyroller");
 
-router.post('/registration', ) 
-router.post('/login',)
-router.get('/auth', (req, res) => {
-    res.json({message: 'ALL WORKING'})
-}) //here we look at whether the user is registered or not
+router.post("/registration", userController.registration);
+router.post("/login", userController.login);
+router.get("/auth", userController.check);
 
-module.exports = router
+module.exports = router;
